@@ -1,19 +1,28 @@
-<?php
+<?php 
+include "db_conn.php"; //using database connection file here
 
-include "db_conn.php";
+if (isset($_GET['id'])) { //check if id parameter is available
+    $id = $_GET['id']; // get the id parameter value
 
-if (isset($_GET['id'])){
+    if(isset(($_GET['confirm'])) && $_GET['confirm'] == 'yes'){
+        $sql = "DELETE FROM students WHERE id = $id";
+        $result = mysqli_query($conn, $sql);
 
-    $id = $_GET['id'];
+        if ($result) {
+        echo "<script>alert('Student Information has Successfully Deleted'); window.location='index.php'</script>";
+        } else {
+        echo "<script>alert('Student Information Not Deleted'); window.location='index.php'</script>";
+        }
 
-    $sql = "DELETE FROM students WHERE id='$id'";
-    $result = mysqli_query($conn, $sql);
-
-    if ($result){
-        echo "<script>alert('Students Information is Successfully Deleted'); window.location='index.php'</script>";
-    } else{
-        echo "<script>alert('Student Not Deleted'); window.location='index.php'</script>";
+   } else { 
+      echo "<script>
+       var userConfirmed = confirm('Are you sure you want to delete this student record?');
+       if (userConfirmed) {
+           window.location.href = 'delete.php?id=$id&confirm=yes';
+        } else {
+         window.location.href = 'form.php';
+        }
+    </script>";
     }
 }
-
 ?>

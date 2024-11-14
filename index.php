@@ -111,7 +111,7 @@ if(!isset ($_SESSION['username'])){
 
 
         <br>
-        <a href="create.php">Register New Student</a>
+        <a href="create.php">Add New Student</a>
         <br>
         <!-- <a href="logout.php">Logout</a> -->
 

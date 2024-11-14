@@ -78,7 +78,7 @@ if (!isset($_SESSION['username'])) {
     ?>
 
     <div class="container form-container">
-        <h2 class="form-title">Register New Students</h2>
+        <h2 class="form-title">Add New Students</h2>
         <form method="POST">
             <div class="mb-3">
                 <label for="name" class="form-label">Name:</label>
